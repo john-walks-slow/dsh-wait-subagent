@@ -1,7 +1,7 @@
 {
   "name": "dsh-wait-subagent",
-  "version": "1.0.0",
-  "description": "Active wait for background continuable subagents in DeepSeek Harness: registers a wait_subagent tool that blocks until the named subagent settles, then returns its stop reason and closing message — closing the gap between run_in_background fire-and-return and the async settlement notice. dsh-wait-subagent：为 DeepSeek Harness 提供后台 continuable 子代理的主动等待——注册 wait_subagent 工具阻塞至目标子代理收尾，返回停止原因与收尾消息，补齐后台子代理只能被动等通知的缺口。",
+  "version": "1.2.0",
+  "description": "Active wait + liveness status for background continuable subagents in DeepSeek Harness: registers four model-facing tools — wait_subagent (blocks until settle, returns stop reason + closing message; timeout carries activity diagnostics), get_subagent_status (non-blocking liveness probe: running vs stalled, last activity age, recent output), wait_some_subagent (first-of-N settlement for parallel fan-out harvesting), and wait_every_subagent (barrier: blocks until every listed child has settled, returns per-child results + failed list). dsh-wait-subagent：为 DeepSeek Harness 提供后台 continuable 子代理的主动等待与活性状态——wait_subagent 阻塞至收尾返回停止原因与收尾消息（超时附带活动诊断）、get_subagent_status 非阻塞探活（进行中/停滞判定+最近输出）、wait_some_subagent 等待首个收尾、wait_every_subagent 屏障式等待全部收尾（逐个结果+失败清单），补齐后台子代理只能被动等通知的缺口。",
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
@@ -17,7 +17,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "release": "npm version patch && npm pack --pack-destination /tmp"
+    "release": "npm version patch && npm pack --pack-destination /tmp",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "@deepseek-ai/dsh-tools": "0.1.2-rc.1"
@@ -36,12 +37,19 @@
     "agent",
     "background",
     "wait",
+    "barrier",
+    "join",
+    "liveness",
+    "status",
     "settlement",
     "continuable",
     "parallel",
+    "fan-out",
     "子代理",
     "后台任务",
     "等待",
+    "屏障",
+    "探活",
     "并行",
     "收尾消息",
     "智能体"
