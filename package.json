@@ -20,7 +20,7 @@
     "release": "npm version patch && npm pack --pack-destination /tmp"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-tools": "0.1.2-rc.1"
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2"
   },
   "dsh": {
     "bundle": {
