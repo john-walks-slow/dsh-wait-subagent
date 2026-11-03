@@ -19,13 +19,16 @@
   "scripts": {
     "release": "npm version patch && npm pack --pack-destination /tmp"
   },
-  "dependencies": {
-    "@deepseek-ai/dsh-tools": "0.2.1-rc.2"
-  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.2 <0.3.0-0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-tools": "^0.2.1-rc.5"
   },
   "keywords": [
     "dsh",
@@ -47,7 +50,8 @@
     "智能体"
   ],
   "engines": {
-    "node": ">=22.5"
+    "node": ">=22.5",
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
   },
   "author": "johnnren",
   "repository": {
